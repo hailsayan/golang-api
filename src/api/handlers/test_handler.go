@@ -15,6 +15,7 @@ type personData struct {
 	FirstName    string `json:"first_name" binding:"required,alpha,min=4,max=10"`
 	LastName     string `json:"last_name" binding:"required,alpha,min=6,max=20"`
 	MobileNumber string `json:"mobile_number" binding:"required,mobile,min=11,max=11"`
+	Password string `json:"password" binding:"required,min=6,max=20,password"`
 }
 type TestHandler struct {
 }
