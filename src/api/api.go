@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
+	"github.com/hailsayan/golang-api/api/middlewares"
 	"github.com/hailsayan/golang-api/api/routers"
 	validation "github.com/hailsayan/golang-api/api/validations"
 	"github.com/hailsayan/golang-api/config"
@@ -21,7 +22,7 @@ func InitServer() {
 		val.RegisterValidation("password", validation.PasswordValidator, true)
 	}
 
-	r.Use(gin.Logger(), gin.Recovery())
+	r.Use(gin.Logger(), gin.Recovery() /*middlewares.TestMiddleware()*/, middlewares.LimitByRequest())
 
 	api := r.Group("/api")
 
